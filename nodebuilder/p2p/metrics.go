@@ -19,6 +19,8 @@ func WithMetrics() fx.Option {
 	return fx.Options(
 		fx.Provide(resourceManagerOpt(traceReporter)),
 		fx.Provide(prometheusMetrics),
+		// Include DHT metrics when P2P metrics are enabled
+		WithDHTMetrics(),
 	)
 }
 
